@@ -37,3 +37,6 @@ file(GLOB MYSTL_HEADERS ./include/*.hpp ./implementation/*.impl.hpp)
 add_library(SimpleSTL STATIC ${MYSTL_HEADERS})
 
 SET_TARGET_PROPERTIES(SimpleSTL PROPERTIES LINKER_LANGUAGE CXX)
+
+#Test directory
+add_subdirectory(tests)

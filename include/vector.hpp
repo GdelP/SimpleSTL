@@ -26,6 +26,24 @@ namespace std {
     vector(vector<T> const& other, const Allocator& alloc);
     vector(vector<T> && other);
     vector(vector<T> && other, const Allocator& alloc);
-    vector(std::initializer_list<T> init, const Allocator& alloc = Allocator());
+    //    vector(std::initializer_list<T> init, const Allocator& alloc = Allocator());
+
+    ~vector();
+    vector& operator=(vector const& other);
+    vector& operator=(vector && other);
+    vector& operator=(std::initializer_list<T> ilist);
+
+    void assign( size_type count, const T& value );
+    template<class InputIT>
+    void assign(InputIt first, InputIt last);
+    //    void assign(std::initializer_list<T> ilist);
+    
+    allocator_type get_allocator() const;
+
+  protected:
+    T* mBuffer;
+    size_type mElements, mAllocated;
+    Allocator mAllocator; //TODO: We can make it static. It's stateless and occupies a byte that can be optimized!
+    //We will have NOT policy about how it grows. We need to optimize for space.
   };
 }
